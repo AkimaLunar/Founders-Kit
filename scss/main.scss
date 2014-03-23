@@ -1,0 +1,289 @@
+// IMPORTS
+@import '../bourbon/bourbon';
+@import "../neat/settings/grid";
+@import "../neat/neat";
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+// VARIABLES
+$tablet: new-breakpoint(max-width 800px 6);
+$mobile: new-breakpoint(max-width 500px 2);
+$dark-bg: #666666;
+$light-bg: #cccccc;
+$cream: #faf9f2;
+$carrot: #ff6138;
+$accent1: #3ace74;
+
+//STYLESHEET
+
+@for $i from 1 through 5 {
+	.shade-#{$i} {
+		background: lighten(#fa6352, $i * 5%);
+	}
+}
+
+$shade: lighten(#fa6352, 10%);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+  color: $accent1;
+  font-size: 1.2em;
+}
+
+
+
+//MAIN
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	color: $dark-bg;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+.main {
+	height: 100%;
+	background: $cream;
+	
+
+}
+.second {
+	
+}
+
+.wrapper {
+	@include outer-container;
+}
+
+//ACTION BUTTON
+
+nav {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 10;
+	button {
+		height: 40px;
+		padding: 0 10px;
+		color: white;
+		text-transform: uppercase;
+		border: none;
+		border-bottom: 2px darken($accent1, 15%) solid;
+		background: $accent1;
+		border-radius: 6px;
+		@include transition (background .2s ease-in-out);
+
+		&:hover {
+			background: lighten($accent1, 10%);
+		}
+	}
+}
+
+//HEADER
+
+header {
+	height: 80px;
+	//background: lighten($cream, 2%);
+	background: lighten($cream, 2%);
+	padding: 30px;
+	width: 100%;
+	img {
+		display: block;
+		height: 20px;
+		width: auto;
+		margin: 0 auto;
+	}
+}
+
+//MAIN COPY
+
+.main-copy {
+	@include span-columns(5);
+	@include shift(1);
+	@include media($tablet) {
+		@include span-columns(6);
+		@include shift(0);
+	};
+	@include media($mobile) {
+		@include span-columns(2);
+		@include shift(0);
+	};
+	position: relative;
+	margin-top: 80px;
+	padding: em(80) 0 0 0;
+	h1 {
+		text-transform: uppercase;
+		font-size: 4.2em;
+		line-height: 1em;
+		margin: 0 0 16px 0;
+		color: $accent1;
+	}
+
+	h2 {
+		font-size: 1.2em;
+		line-height: 1.5em;
+		margin: 0 0 16px 0;
+		letter-spacing: em(2);
+	}
+
+	p {
+		margin: 0 0 32px 0;
+		padding-left: em(20);
+		font-size: 1.2em;
+		line-height: 1.5em;
+		border-left: 6px solid $dark-bg;
+	}
+	button {
+		position: absolute;
+		right: 0;
+		bottom: 0px;
+		height: 50px;
+		width: 50px;
+		background: transparent;
+		border: none;
+		@include transition (all .2s ease-in-out);
+		&:hover {
+			right: -6px;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	span {
+		color: $accent1;
+	}
+}
+
+input[type="email"] {
+	height: 50px;
+	width: 100%;
+	font-size: 1.2em;
+	color: $accent1;
+	background: transparent;
+    padding: 0 12px;
+	border: 1px $accent1 solid;
+	@include placeholder {
+	    color: $light-bg;
+	    font-style: italic;
+	}
+	&:focus {
+		outline: 0;
+	}
+}
+
+//PACKAGE
+.second {
+	background: $accent1;
+}
+.filters {
+	h1 {
+		color: $cream;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 2.4em;
+		margin: 48px 0 16px 0;
+	}
+	h4 {
+		color: $cream;
+		text-align: center;
+		text-transform: lowercase;
+		margin: 0 0 16px 0;
+		font-size: 1.2em;
+		line-height: 1.5em;
+		letter-spacing: em(2);
+	}
+	ul {
+		color: $cream;
+		padding: 0;
+		margin: 0 0 48px 0;
+		text-align: center;
+		list-style: none;
+	}
+	li {
+		display: inline-block;
+		padding: 0 em(16);
+	}
+}
+
+.selection {
+	
+	ul {
+		list-style: none;
+		padding: 0 0 50px 0;
+		margin: 0 0 48px 0;
+		&:before,
+		&:after {
+			content: " "; 
+			display: table; 
+		}
+		&:after {
+			clear: both;
+		}
+	}
+	li {
+		@include span-columns(3);
+		@include omega(4n);
+		background: $cream;
+		//width: 25%;
+		//float: left;
+		height: 420px;
+		padding: em(10) em(20);
+		//margin-left: -10px;
+		margin-bottom: 32px;
+
+		
+		// @include media($tablet) {
+		// 	width: 50%;
+		// };
+		// @include media($mobile) {
+		// 	width: 100%;
+		// };
+
+		a {
+			display: block;
+			width: 100%;
+			height: 200px;
+			padding: em(20);
+			@include background-image(url("/assets/slack.png"));
+			background-size: 50%;
+			background-repeat: no-repeat;
+			background-position: center;
+
+		}
+		p {
+			line-height: 1.5em;
+		}
+	}
+	h2 {
+		display: inline-block;
+		padding: 0.5em 0;
+		color: $accent1;
+		text-transform: uppercase;
+		border-top: 4px solid $accent1;
+		letter-spacing: 4px;
+		font-weight: 900;
+		font-style: normal;
+		font-size: 0.8em;
+	}
+
+	h3 {
+		//font-family: "p22-underground";
+		font-weight: 100;
+		font-style: normal;
+		font-size: 2em;
+		text-align: center;
+	}
+}
+
+//FOOTER
+
+footer {
+	height: 100px;
+	background-color: $dark-bg;
+}
+
